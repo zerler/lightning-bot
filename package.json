@@ -13,7 +13,8 @@
     "node-fetch": "^2.6.0"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "10.16.0",
+    "npm": "6.9.0"
   },
   "repository": {
     "type": "git",
