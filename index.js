@@ -24,6 +24,8 @@ server = http.createServer(function (req, res) {
   });
 });
 
+setTimeout(bot.check, 10000);
+
 port = Number(process.env.PORT || 5000);
 server.listen(port);
 
