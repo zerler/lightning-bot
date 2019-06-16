@@ -23,11 +23,12 @@ const getData = async () => {
 const check = async () => {
   
   const info = await getData();
-    if (!info.error){
-      const when = dateFns.distanceInWordsToNow(
-          data.response.ob.timestamp.toDate(),
-          { addSuffix: true }
-      );
+
+  if (!info.error){
+    const when = dateFns.distanceInWordsToNow(
+        data.response.ob.timestamp.toDate(),
+        { addSuffix: true }
+    );
 
     const distance = data.response.relativeTo.distanceMI;
 
@@ -37,7 +38,7 @@ const check = async () => {
 
   const now = dateFns.format(new Date(), 'MMM Do [at] h:m:s a');
   console.log(`checked for lightning at: ${now}`);
-}
+};
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
