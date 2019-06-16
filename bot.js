@@ -34,10 +34,10 @@ const check = async () => {
 
     const msg = `Lightning struck ${distance} miles away ${when}`;
     postMessage(msg);
-  } else {
-    const now = dateFns.format(new Date(), 'MMM Do [at] h:m:s a');
-    postMessage(`checked for lightning at: ${now}, ${JSON.stringify(info)}`);
   }
+
+  // const now = dateFns.format(new Date(), 'MMM Do [at] h:m:s a');
+  // postMessage(`checked for lightning at: ${now}, ${JSON.stringify(info)}`);
 };
 
 function respond() {
