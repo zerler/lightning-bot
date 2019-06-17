@@ -1,3 +1,5 @@
+const ping = require('ping');
+
 const selfPing = () => {
     const now = new Date();
     if (now.getHours >= 3 && now.getHours <= 13){
