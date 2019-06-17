@@ -14,8 +14,11 @@ const secret = 'hvTJdbNZIaTeLwLwJqadxoxXwU8ZB08nyBF9Yacc';
 // radius: 10 mi
 const getData = async () => {
 
+  postMessage('  -> beginning fetch');
   const response = await fetch(base + `closest?p=wildwood,mo&format=json&radius=10mi&filter=cg&limit=1&client_id=${clientID}&client_secret=${secret}`);
+  postMessage('  -> beginning json()');
   const data = await response.json();
+  postMessage('  -> posting data');
   postMessage(data);
   return data;
 
