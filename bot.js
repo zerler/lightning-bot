@@ -21,6 +21,7 @@ const getData = async () => {
 };
 
 const check = async () => {
+  postMessage('checking for lightning!');
   
   const info = await getData();
 
