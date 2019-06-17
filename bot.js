@@ -48,6 +48,8 @@ function respond() {
     this.res.writeHead(200);
     postMessage(cool());
     this.res.end();
+  } else if (request.text && request.text.includes('/check')) {
+    check();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
