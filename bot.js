@@ -93,3 +93,4 @@ function postMessage(botResponse) {
 
 exports.respond = respond;
 exports.check = check;
+exports.postMessage = postMessage;
