@@ -16,6 +16,7 @@ const getData = async () => {
 
   const response = await fetch(base + `closest?p=wildwood,mo&format=json&radius=10mi&filter=cg&limit=1&client_id=${clientID}&client_secret=${secret}`);
   const data = await response.json();
+  postMessage(data);
   return data;
 
 };
@@ -24,7 +25,6 @@ const check = async () => {
   postMessage('checking for lightning!');
   
   const info = await getData();
-  postMessage('lightning data:', JSON.stringify(info));
 
   if (!info.error){
     const when = dateFns.distanceInWordsToNow(
