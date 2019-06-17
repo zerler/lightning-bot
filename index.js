@@ -26,7 +26,7 @@ server = http.createServer(function (req, res) {
 
 bot.check();
 // setInterval(bot.check, 60000);
-// bot.postMessage('bot is booted up and listening for lightning');
+bot.postMessage('bot is booted up and listening for lightning');
 
 port = Number(process.env.PORT || 5000);
 server.listen(port);
