@@ -36,11 +36,11 @@ const check = async () => {
     if (info.response[0].id !== mostRecentID){
       postMessage(msg);
     }
+    mostRecentID = info.response[0].id;
   }
 
   const now = dateFns.format(new Date(), 'MMM Do [at] h:m:s a');
   console.log(`checked for lightning at: ${now}, ${JSON.stringify(info)}`);
-  mostRecentID = info.response[0].id;
 };
 
 function respond() {
