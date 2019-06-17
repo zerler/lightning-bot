@@ -4,6 +4,7 @@ http        = require('http');
 director    = require('director');
 cool        = require('cool-ascii-faces');
 bot         = require('./bot.js');
+pinger      = require('./ping.js');
 
 router = new director.http.Router({
   '/' : {
@@ -25,7 +26,10 @@ server = http.createServer(function (req, res) {
 });
 
 bot.check();
+pinger.selfPing();
+
 setInterval(bot.check, 120000);
+setInterval(pinger.selfPing, 1740000);
 bot.postMessage('bot is booted up and listening for lightning');
 
 port = Number(process.env.PORT || 5000);
