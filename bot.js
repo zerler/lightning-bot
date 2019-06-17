@@ -18,8 +18,7 @@ const getData = async () => {
   const response = await fetch(base + `closest?p=wildwood,mo&format=json&radius=10mi&filter=cg&limit=1&client_id=${clientID}&client_secret=${secret}`);
   postMessage('  -> beginning json()');
   const data = await response.json();
-  postMessage('  -> posting data');
-  postMessage(data);
+  postMessage('  -> posting data', JSON.stringify(data));
   return data;
 
 };
