@@ -30,11 +30,11 @@ const check = async () => {
 
   if (!info.error){
     const when = dateFns.distanceInWordsToNow(
-        data.response[0].ob.dateTimeISO,
+        info.response[0].ob.dateTimeISO,
         { addSuffix: true }
     );
 
-    const distance = data.response[0].relativeTo.distanceMI;
+    const distance = info.response[0].relativeTo.distanceMI;
 
     const msg = `Lightning struck ${distance} miles away ${when}`;
     postMessage(msg);
