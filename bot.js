@@ -4,6 +4,7 @@ const fetch = require('node-fetch');
 const dateFns = require('date-fns');
 
 var botID = process.env.BOT_ID;
+let mostRecentID = '';
 
 const base = 'https://api.aerisapi.com/lightning/';
 const clientID = 'GswuCYPlljd2TLEVHztbx';
@@ -14,18 +15,13 @@ const secret = 'hvTJdbNZIaTeLwLwJqadxoxXwU8ZB08nyBF9Yacc';
 // radius: 10 mi
 const getData = async () => {
 
-  postMessage('  -> beginning fetch');
   const response = await fetch(base + `closest?p=wildwood,mo&format=json&radius=10mi&filter=cg&limit=1&client_id=${clientID}&client_secret=${secret}`);
-  postMessage('  -> beginning json()');
   const data = await response.json();
-  postMessage('  -> posting data', data);
   return data;
 
 };
 
 const check = async () => {
-  postMessage('checking for lightning!');
-  
   const info = await getData();
 
   if (!info.error){
@@ -37,11 +33,14 @@ const check = async () => {
     const distance = info.response[0].relativeTo.distanceMI;
 
     const msg = `Lightning struck ${distance} miles away ${when}`;
-    postMessage(msg);
+    if (info.response[0].id !== mostRecentID){
+      postMessage(msg);
+    }
   }
 
   const now = dateFns.format(new Date(), 'MMM Do [at] h:m:s a');
-  postMessage(`checked for lightning at: ${now}, ${JSON.stringify(info)}`);
+  console.log(`checked for lightning at: ${now}, ${JSON.stringify(info)}`);
+  mostRecentID = info.response[0].id;
 };
 
 function respond() {
