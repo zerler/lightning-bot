@@ -24,6 +24,7 @@ const check = async () => {
   postMessage('checking for lightning!');
   
   const info = await getData();
+  postMessage('lightning data:', JSON.stringify(info));
 
   if (!info.error){
     const when = dateFns.distanceInWordsToNow(
