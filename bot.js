@@ -55,8 +55,8 @@ function respond() {
   } else if (request.text && checkRegex.test(request.text)){
     this.res.writeHead(200);
 
-    getData().then(data => JSON.stringify(data).then(json => postMessage(json)));
-    
+    getData().then(data => postMessage(JSON.stringify(data)));
+
     this.res.end();
   } else {
     console.log("don't care");
