@@ -44,25 +44,23 @@ const check = async () => {
 };
 
 function respond() {
+  this.res.writeHead(200);
+
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^\/cool guy$/;
   const checkRegex = /^\/check$/;
+  const benRegex = /ben/;
 
   if(request.text && botRegex.test(request.text)) {
-    this.res.writeHead(200);
     postMessage(cool());
-    this.res.end();
   } else if (request.text && checkRegex.test(request.text)){
-    this.res.writeHead(200);
-
     getData().then(data => postMessage(JSON.stringify(data)));
-
-    this.res.end();
+  } else if (request.text && benRegex.test(request.text.toLowerCase())){
+    postMessage('that\'s that name of my creator!!');
   } else {
     console.log("don't care");
-    this.res.writeHead(200);
-    this.res.end();
   }
+  this.res.end();
 }
 
 function postMessage(botResponse) {

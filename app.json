@@ -1,6 +1,6 @@
 {
-  "name": "Cool guy bot",
-  "description": "Basic Groupme Bot written in Node",
+  "name": "LightningBot",
+  "description": "Basic Groupme Bot written in Node, detects lightning strikes near Wildwood, MO.",
   "repository": "https://github.com/petemcgrath/cool-guy-bot",
   "logo": "http://www.tailgate365.com/wp-content/uploads/2011/06/tom-hanks-906.jpg",
   "keywords": []
