@@ -46,13 +46,18 @@ const check = async () => {
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^\/cool guy$/;
+  const checkRegex = /^\/check$/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage(cool());
     this.res.end();
-  } else if (request.text && request.text.includes('/check')) {
-    check();
+  } else if (request.text && checkRegex.test(request.text)){
+    this.res.writeHead(200);
+
+    getData().then(data => JSON.stringify(data).then(json => postMessage(json)));
+    
+    this.res.end();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
