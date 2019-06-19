@@ -31,16 +31,18 @@ const check = async () => {
     );
 
     const distance = info.response[0].relativeTo.distanceMI;
+    const long = info.response[0].loc.long;
+    const lat = info.response[0].loc.lat;
 
     const msg = `Lightning struck ${distance} miles away ${when}`;
     if (info.response[0].id !== mostRecentID){
-      postMessage(msg);
+      postWithLoc(msg, long, lat);
     }
     mostRecentID = info.response[0].id;
   }
 
   const now = dateFns.format(new Date(), 'MMM Do [at] h:m:s a');
-  console.log(`checked for lightning at: ${now}, ${JSON.stringify(info)}`);
+  console.log(`checked for lightning at: ${now}, ${info.error.description}`);
 };
 
 function respond() {
@@ -56,7 +58,7 @@ function respond() {
   } else if (request.text && checkRegex.test(request.text)){
     getData().then(data => postMessage(JSON.stringify(data)));
   } else if (request.text && benRegex.test(request.text.toLowerCase())){
-    postMessage('that\'s that name of my creator!!');
+    postMessage('that\'s the name of my creator!!');
   } else {
     console.log("don't care");
   }
@@ -95,6 +97,44 @@ function postMessage(botResponse) {
   });
   botReq.end(JSON.stringify(body));
 }
+
+const postWithLoc = (botResponse, long, lat) => {
+  var options, body, botReq;
+
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id" : botID,
+    "text" : botResponse
+    "attachments" : [
+      {
+        "type"  : "location",
+        "lng"   : long.toString(),
+        "lat"   : lat.toString(),
+        "name"  : "Nearest lightning"
+      }
+    ]
+  };
+
+  console.log('sending ' + botResponse + ' WITH LOCATION to ' + botID);
+
+  botReq = HTTPS.request(options, res => {
+      if(res.statusCode != 202) {
+        console.log('rejecting bad status code ' + res.statusCode);
+      }
+  });
+  botReq.on('error', function(err) {
+    console.log('error posting message '  + JSON.stringify(err));
+  });
+  botReq.on('timeout', function(err) {
+    console.log('timeout posting message '  + JSON.stringify(err));
+  });
+  botReq.end(JSON.stringify(body));
+};
 
 
 exports.respond = respond;
