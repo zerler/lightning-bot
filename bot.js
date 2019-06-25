@@ -7,8 +7,8 @@ var botID = process.env.BOT_ID;
 let mostRecentID = '';
 
 const base = 'https://api.aerisapi.com/lightning/';
-const clientID = 'GswuCYPlljd2TLEVHztbx';
-const secret = 'hvTJdbNZIaTeLwLwJqadxoxXwU8ZB08nyBF9Yacc';
+const clientID = process.env.CLIENT_ID;
+const secret = process.env.SECRET;
 
 // fetch lightning information from aeris API
 // location: wildwood, mo
