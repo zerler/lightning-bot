@@ -1,8 +1,8 @@
-# Sample GroupMe NodeJS Callback Bot
+# GroupMe NodeJS Lightning Bot
 
 ## Introduction
 
-This project shows the capability of a bot to react to messages sent within a group.
+This project was primarily a means to familiarize myself with the behavior of NodeJS. I had the idea for this project while lifeguarding, thinking it would be helpful to get a notification when there's lightning near me to know when to close the pool! This project was built with NodeJS and receives lightning data through the Aeris Weather API.
 
 ## Contents
 
@@ -135,15 +135,6 @@ becomes:
 
     BOT_ID="12345678910"
 
-## Start the server
-
-To test your bot locally, open terminal and run the following command to start a local server.
-
-    $ foreman start
-
-Then navigate to `http://127.0.0.1:5000/` in a browser.
-
-![Local bot](http://i.groupme.com/502x133.png.f06c630467954f5dab4c742dc67b71bf)
 
 ## All done! Go play around and make the bot your own.
 
