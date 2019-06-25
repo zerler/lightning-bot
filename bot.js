@@ -9,6 +9,7 @@ let mostRecentID = '';
 const base = 'https://api.aerisapi.com/lightning/';
 const clientID = process.env.CLIENT_ID;
 const secret = process.env.SECRET;
+console.log('clientID:', clientID);
 
 // fetch lightning information from aeris API
 // location: wildwood, mo
