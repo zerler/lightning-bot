@@ -13,29 +13,20 @@ This project was primarily a means to familiarize myself with the behavior of No
   * [Make changes to the bot](#pull)
     * Pull the code down to your local machine
     * Configure the local environment variables to your bot's credentials
+    * Configure the id and secret for Aeris API
 
 ## Requirements:
 
   * GroupMe account
   * Heroku account
+  * Aeris Weather account
   * [Heroku Toolbelt](https://toolbelt.heroku.com/)
 
 # Get your bot up and running<a name="deploy"></a>
 
 ## Deploy to Heroku:
 
-Be sure to log into heroku, using your heroku credentials, then click the link below.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-You should be taken to a page that looks like this:
-
-![Deploy to Heroku](http://i.groupme.com/837x662.png.36c63698644a4f61a9ff3d5af91caa5e)
-
-Optionally, you can give your app a name, or instead leave
-it blank and let Heroku name it for you (you can change it later).
-
-![Success](https://i.groupme.com/959x932.png.85e7959a8a9a41c6b20f5f6b50aceecb)
+Clone this repository to your computer, then [follow the directions](https://devcenter.heroku.com/articles/git) listed in your heroku project to deploy your files to your remote heroku project.
 
 
 ## Next, create a GroupMe Bot:
@@ -135,6 +126,26 @@ becomes:
 
     BOT_ID="12345678910"
 
+## Configure your Aeries Client ID and Secret
+
+Open the file 'bot.js' from your local files in your text editor of choice.
+On lines 10-11, you'll need to change the value of these variables to your own Client ID and Secret, found within your Aeris account.
+
+After logging into [Aeris](https://www.aerisweather.com/), follow these steps to get your ID and secret:
+* Click 'Apps' from your dashboard
+* Click 'New Application' and come up with a name for your project
+* It should now show up under 'Registered Apps', listing the client ID and secret
+* Copy and paste these into the aforementioned 'bot.js' file
+
+If your Bot ID is 987654321, then:
+
+    const clientID = 'YOUR_CLIENT_ID';
+
+becomes:
+
+    const clientID = '987654321';
+
+The same should follow for the 'secret' variable declared below it, simply change the value to the secret listed in your registered app.
 
 ## All done! Go play around and make the bot your own.
 
