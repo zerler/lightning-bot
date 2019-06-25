@@ -26,8 +26,7 @@ This project was primarily a means to familiarize myself with the behavior of No
 
 ## Deploy to Heroku:
 
-Clone this repository to your computer, then [follow the directions](https://devcenter.heroku.com/articles/git) listed in your heroku project to deploy your files to your remote heroku project.
-
+Clone this repository to your computer, run 'npm install' in a terminal from the directory containing all of your files, then [follow the directions](https://devcenter.heroku.com/articles/git) listed in your heroku project to deploy your files to your remote heroku project.
 
 ## Next, create a GroupMe Bot:
 
