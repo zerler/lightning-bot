@@ -7,7 +7,7 @@ const survive = () => {
         http.get("http://zerler-lightning-bot.herokuapp.com");
         console.log('keeping myself alive :)');
     } else {
-    	console.log(`bedtime!!! it's ${now.getHours()}:${now.getMinutes()}`);
+    	console.log(`bedtime!! it's ${now.getHours()}:${now.getMinutes()}`);
     }
 };
 
